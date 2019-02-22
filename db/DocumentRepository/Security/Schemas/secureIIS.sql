@@ -1,0 +1,3 @@
+CREATE SCHEMA [secureIIS]
+AUTHORIZATION [secureIIS]
+GO
