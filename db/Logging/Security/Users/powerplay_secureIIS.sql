@@ -1,0 +1,5 @@
+IF NOT EXISTS (SELECT * FROM master.dbo.syslogins WHERE loginname = N'POWERPLAY\secureIIS')
+CREATE LOGIN [POWERPLAY\secureIIS] FROM WINDOWS
+GO
+CREATE USER [powerplay\secureIIS] FOR LOGIN [POWERPLAY\secureIIS] WITH DEFAULT_SCHEMA=[powerplay\secureIIS]
+GO
