@@ -1,0 +1,40 @@
+CREATE TABLE [dbo].[ClaimProperties]
+(
+[ClaimID] [int] NOT NULL,
+[AllowCashSettle] [tinyint] NULL,
+[CashSettlePerc] [decimal] (5, 4) NULL,
+[CreateDate] [smalldatetime] NULL,
+[CreatedBy] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[AlteredDate] [smalldatetime] NULL,
+[AlteredBy] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Fraud] [bit] NULL,
+[TVAge] [int] NULL,
+[LaptopAge] [int] NULL,
+[lastclaimed_months] [int] NULL,
+[attempted_repair] [bit] NULL,
+[ReferAuthBy] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[LaptopDamage] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[TVDamage] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[LaptopValue] [money] NULL,
+[TVValue] [money] NULL,
+[PolicyInceptionDate] [datetime] NULL,
+[CallScript] [int] NULL,
+[PreviousClaim] [tinyint] NULL,
+[PreviousRepair] [tinyint] NULL,
+[CauseOfClaimDetail] [int] NULL,
+[NoPolicyNumberConfirmed] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Amount_Claimed] [money] NULL CONSTRAINT [DF_ClaimProperties_Amount_Claimed] DEFAULT ((0)),
+[Sum_Insured] [money] NULL CONSTRAINT [DF_ClaimProperties_Sum_Insured] DEFAULT ((0)),
+[Limits] [varchar] (200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Initial_Reserve] [money] NULL,
+[Excess] [money] NULL,
+[Saving] [money] NULL,
+[PoliceStation] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[PolicePhone] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[CrimeRefNo] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[DateReported] [datetime] NULL,
+[FraudIndicator] [varchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[ClaimProperties] ADD CONSTRAINT [PK_ClaimProperties] PRIMARY KEY CLUSTERED  ([ClaimID]) ON [PRIMARY]
+GO

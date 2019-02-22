@@ -1,0 +1,16 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[IsClaimBookable]
+@claimid INT
+AS
+
+SET NOCOUNT ON
+
+SELECT 
+CASE WHEN status=1 THEN fin ELSE '' END
+FROM fraud 
+WHERE claimid=@claimid
+
+GO
