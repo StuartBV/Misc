@@ -57,6 +57,10 @@
     <DataWriteAllFilesInOneDirectory>True</DataWriteAllFilesInOneDirectory>
   </WriteToFileOptions>
   <DataFileSet>
-    <Count>0</Count>
+    <Count>4</Count>
+    <DataFile>dbo.Card_companies_Data.sql</DataFile>
+    <DataFile>dbo.iCardsAdminAccess_Data.sql</DataFile>
+    <DataFile>dbo.SysLookup_Data.sql</DataFile>
+    <DataFile>dbo.TransactionSuppliers_Data.sql</DataFile>
   </DataFileSet>
 </DatabaseInformation>

@@ -1,0 +1,4 @@
+SET IDENTITY_INSERT [dbo].[Card_companies] ON
+INSERT INTO [dbo].[Card_companies] ([ID], [Company], [Address1], [Street], [City], [County], [PCode], [Contact], [Phone], [InsuranceCo], [ClaimNoPrefix], [CreateDate], [CreatedBy], [AlteredDate], [AlteredBy], [enabled]) VALUES (1, 'TSYS Europe', 'Fulford Manor House', 'Fulford Road', 'York', NULL, 'YO10 4EY', NULL, '0194 562 000', 'NU', 'CNU', '2006-05-17 00:00:00.000', '?', NULL, NULL, 0)
+INSERT INTO [dbo].[Card_companies] ([ID], [Company], [Address1], [Street], [City], [County], [PCode], [Contact], [Phone], [InsuranceCo], [ClaimNoPrefix], [CreateDate], [CreatedBy], [AlteredDate], [AlteredBy], [enabled]) VALUES (2, 'FIS', '', '', '', '', '', '', '', 'NU', 'FIS', '2011-03-02 17:50:30.000', 'markp', '2011-03-02 17:50:30.000', 'markp', 1)
+SET IDENTITY_INSERT [dbo].[Card_companies] OFF
