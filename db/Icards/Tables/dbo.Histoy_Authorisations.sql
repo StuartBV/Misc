@@ -1,0 +1,42 @@
+CREATE TABLE [dbo].[Histoy_Authorisations]
+(
+[TransactionID] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[MerchantCategoryCode] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[AuthorizationCode] [varchar] (14) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[LocalDate] [varchar] (25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Location] [varchar] (100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[HoldExpiryDate] [varchar] (25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[CardID] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[CardNumber] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[AccountID] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[MerchantDescriptionID] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[keyedExpiryDate] [varchar] (25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[KeyedCVV2] [varchar] (3) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[AVSresponse] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[DeclineType] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[DeclineTypeName] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[KeyedStreetAddress] [varchar] (150) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[KeyedPostalCode] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[CreatedDate] [varchar] (25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Amount] [money] NULL,
+[Currency] [varchar] (3) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ExternalFee] [money] NULL,
+[AuthTrancodeID] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[AuthTrancodeName] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[AuthEntryModeID] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[AuthEntryModeName] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[AuthNetworkID] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[FinancialInstutionID] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[CorpProgramID] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[VisaAuthStatus] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[VisaAuthStatusName] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[StatusChangedDate] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[TerminalCountry] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[UserID] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[BankBinID] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[PipelineID] [varchar] (19) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[PipeleineName] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO
+CREATE CLUSTERED INDEX [Idx_LocalDate] ON [dbo].[Histoy_Authorisations] ([LocalDate]) WITH (FILLFACTOR=100) ON [PRIMARY]
+GO

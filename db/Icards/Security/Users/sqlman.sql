@@ -1,0 +1,6 @@
+IF NOT EXISTS (SELECT * FROM master.dbo.syslogins WHERE loginname = N'POWERPLAY\sqlman')
+CREATE LOGIN [POWERPLAY\sqlman] FROM WINDOWS
+GO
+CREATE USER [sqlman] FOR LOGIN [POWERPLAY\sqlman]
+GO
+REVOKE CONNECT TO [sqlman]

@@ -1,0 +1,3 @@
+CREATE SCHEMA [Powerplay]
+AUTHORIZATION [Powerplay]
+GO

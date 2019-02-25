@@ -1,0 +1,33 @@
+CREATE TABLE [dbo].[FIS_Reporting_DailyExport]
+(
+[ID] [int] NOT NULL IDENTITY(1, 1),
+[RECTYPE] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[LOCALDATE] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[LOCALTIME] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ITEMID] [int] NULL,
+[MSGID] [int] NULL,
+[INSTCODE] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[PAN] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[CARDID] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[CRDPRODUCT] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[PROGRAMID] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[BRNCODE] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[CURBILL] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ACCCUR] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ACCNO] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ACCTYPE] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[AMTBILL] [money] NULL,
+[CORTEXDATE] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[CRDACPTID] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[REV] [int] NULL,
+[ORGITEMID] [int] NULL,
+[DESCRIPTION] [varchar] (250) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[LOADSRC] [int] NULL,
+[LOADTYPE] [int] NULL,
+[TOTITEMS] [int] NULL,
+[CreateDate] [datetime] NULL,
+[CreatedBy] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[AlteredDate] [datetime] NULL,
+[AlteredBy] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO
