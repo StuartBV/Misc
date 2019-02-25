@@ -1,4 +1,4 @@
-SET QUOTED_IDENTIFIER OFF
+SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
@@ -26,7 +26,7 @@ join ppd3.dbo.sysLookup sys on sys.TableName='CancelReason' and sys.Code=c.Cance
 left join ppd3.dbo.ClaimCategoriesSingleView ccsv on ccsv.claimid=c.claimid
 where c.channel in ('ival','axa','NUIBRAD','AVIVAST')
 and c.CancelDateUTC between @fd and @td
-and isnull(c.AllowedRRP,0)>=case when channel='axa' then 0 else 400 end
+--and isnull(c.AllowedRRP,0)>=case when channel='axa' then 0 else 400 end --Atom 73999 JD 04/07/2018. 
 and not exists (select * from fraud.dbo.claims where OriginClaimID=c.claimid)
 order by c.channel,sys.[Description],isnull(c.AllowedRRP,0)
 

@@ -1,3 +1,9 @@
+
+EXEC sp_addrolemember N'db_owner', N'BackupAgent'
+
+EXEC sp_addrolemember N'db_owner', N'POWERPLAY\BGWEBCLUSTER1$'
+
+EXEC sp_addrolemember N'db_owner', N'POWERPLAY\BGWEBCLUSTER2$'
 EXEC sp_addrolemember N'db_owner', N'IT Development'
 GO
 EXEC sp_addrolemember N'db_owner', N'powerplay'
