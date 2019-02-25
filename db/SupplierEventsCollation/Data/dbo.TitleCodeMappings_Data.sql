@@ -1,0 +1,5 @@
+INSERT INTO [dbo].[TitleCodeMappings] ([CMSTitle], [CPLTitleCode], [CPLTitleDescription], [CreateDate], [CreatedBy]) VALUES ('Dr', 'B53 001', 'Doctor', '2010-06-03 12:16:00.000', 'Sys')
+INSERT INTO [dbo].[TitleCodeMappings] ([CMSTitle], [CPLTitleCode], [CPLTitleDescription], [CreateDate], [CreatedBy]) VALUES ('Miss', 'B53 002', 'Miss', '2010-06-03 12:16:00.000', 'Sys')
+INSERT INTO [dbo].[TitleCodeMappings] ([CMSTitle], [CPLTitleCode], [CPLTitleDescription], [CreateDate], [CreatedBy]) VALUES ('Mr', 'B53 003', 'Mr', '2010-06-03 12:15:00.000', 'Sys')
+INSERT INTO [dbo].[TitleCodeMappings] ([CMSTitle], [CPLTitleCode], [CPLTitleDescription], [CreateDate], [CreatedBy]) VALUES ('Mrs', 'B53 004', 'Mrs', '2010-06-03 12:16:00.000', 'Sys')
+INSERT INTO [dbo].[TitleCodeMappings] ([CMSTitle], [CPLTitleCode], [CPLTitleDescription], [CreateDate], [CreatedBy]) VALUES ('Ms', 'B53 005', 'Ms', '2010-06-03 12:16:00.000', 'Sys')

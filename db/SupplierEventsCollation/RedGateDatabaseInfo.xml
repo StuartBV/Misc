@@ -57,6 +57,9 @@
     <DataWriteAllFilesInOneDirectory>True</DataWriteAllFilesInOneDirectory>
   </WriteToFileOptions>
   <DataFileSet>
-    <Count>0</Count>
+    <Count>3</Count>
+    <DataFile>dbo.eCodeMappings_Data.sql</DataFile>
+    <DataFile>dbo.Ordering_CPL_ItemTypeCodes_Data.sql</DataFile>
+    <DataFile>dbo.TitleCodeMappings_Data.sql</DataFile>
   </DataFileSet>
 </DatabaseInformation>
