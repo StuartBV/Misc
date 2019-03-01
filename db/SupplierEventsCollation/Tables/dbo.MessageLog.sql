@@ -16,9 +16,9 @@ CREATE TABLE [dbo].[MessageLog]
 GO
 ALTER TABLE [dbo].[MessageLog] ADD CONSTRAINT [PK_MessageLog] PRIMARY KEY CLUSTERED  ([LogID]) WITH (FILLFACTOR=100) ON [Data]
 GO
-CREATE NONCLUSTERED INDEX [Idx_MessageID] ON [dbo].[MessageLog] ([MessageID]) WITH (FILLFACTOR=90, PAD_INDEX=ON) ON [Indexes]
+CREATE NONCLUSTERED INDEX [Idx_MessageID] ON [dbo].[MessageLog] ([MessageID]) WITH (FILLFACTOR=95, PAD_INDEX=ON) ON [Indexes]
 GO
-CREATE NONCLUSTERED INDEX [Idx_SourceKey] ON [dbo].[MessageLog] ([SourceKey], [SupplierID], [MessageType], [MessageID]) WITH (FILLFACTOR=80, PAD_INDEX=ON) ON [Indexes]
+CREATE NONCLUSTERED INDEX [Idx_SourceKey] ON [dbo].[MessageLog] ([SourceKey], [SupplierID], [MessageType], [MessageID]) WITH (FILLFACTOR=95, PAD_INDEX=ON) ON [Indexes]
 GO
 CREATE STATISTICS [Statistic_ItemsHash] ON [dbo].[MessageLog] ([ItemsHash], [SourceKey], [SupplierID], [MessageType], [MessageID])
 GO

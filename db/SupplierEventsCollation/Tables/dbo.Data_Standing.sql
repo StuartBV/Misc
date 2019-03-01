@@ -32,11 +32,11 @@ CREATE TABLE [dbo].[Data_Standing]
 [CPLEstimateID] AS (case [sourcesystem] when 'cms' then 'C' when 'ordering' then 'OS' end+((((CONVERT([varchar],[SourceKey],(0))+'/')+CONVERT([varchar],[supplierID],(0)))+'/')+[Data]))
 ) ON [Data]
 GO
-ALTER TABLE [dbo].[Data_Standing] ADD CONSTRAINT [PK_StandingData] PRIMARY KEY CLUSTERED  ([MessageID]) WITH (FILLFACTOR=100) ON [Data]
+ALTER TABLE [dbo].[Data_Standing] ADD CONSTRAINT [PK_StandingData] PRIMARY KEY CLUSTERED  ([MessageID]) WITH (FILLFACTOR=95) ON [Data]
 GO
 CREATE NONCLUSTERED INDEX [Idx_EventID] ON [dbo].[Data_Standing] ([EventID]) ON [Data]
 GO
-CREATE NONCLUSTERED INDEX [IX_ClaimID] ON [dbo].[Data_Standing] ([SourceKey], [SupplierID], [MessageType]) WITH (FILLFACTOR=70, PAD_INDEX=ON) ON [Indexes]
+CREATE NONCLUSTERED INDEX [Idx_SourceKey] ON [dbo].[Data_Standing] ([SourceKey], [SupplierID], [MessageType]) WITH (FILLFACTOR=95, PAD_INDEX=ON) ON [Indexes]
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'', 'SCHEMA', N'dbo', 'TABLE', N'Data_Standing', 'COLUMN', N'EventID'
 GO
