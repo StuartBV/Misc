@@ -48,11 +48,11 @@ ALTER TABLE [dbo].[SupplierInvoiceMatch] ADD CONSTRAINT [PK_SupplierInvoiceMatch
 GO
 CREATE NONCLUSTERED INDEX [Idx_CreateDate] ON [dbo].[SupplierInvoiceMatch] ([CreateDate]) INCLUDE ([ID]) WITH (FILLFACTOR=100, PAD_INDEX=ON) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [Idx_Did] ON [dbo].[SupplierInvoiceMatch] ([DID], [SupplierRef]) INCLUDE ([ClaimID], [ID], [InvoiceTotal], [SupplierID]) WITH (FILLFACTOR=90, PAD_INDEX=ON) ON [PRIMARY]
+CREATE NONCLUSTERED INDEX [Idx_Did] ON [dbo].[SupplierInvoiceMatch] ([DID], [SupplierRef]) INCLUDE ([ClaimID], [ID], [InvoiceTotal], [SupplierID]) WITH (FILLFACTOR=98, PAD_INDEX=ON) ON [PRIMARY]
 GO
-CREATE CLUSTERED INDEX [Idx_ReportNo] ON [dbo].[SupplierInvoiceMatch] ([ReportNo], [DID]) WITH (FILLFACTOR=90, PAD_INDEX=ON) ON [PRIMARY]
+CREATE UNIQUE CLUSTERED INDEX [Idx_ReportNo] ON [dbo].[SupplierInvoiceMatch] ([ReportNo], [DID], [ID]) WITH (FILLFACTOR=98, PAD_INDEX=ON) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [Idx_ReportNo_2] ON [dbo].[SupplierInvoiceMatch] ([ReportNo], [SupplierRef], [ClaimID], [SupplierID], [DID]) INCLUDE ([ID], [InvoiceTotal]) WITH (FILLFACTOR=90) ON [PRIMARY]
+CREATE NONCLUSTERED INDEX [Idx_ReportNo_2] ON [dbo].[SupplierInvoiceMatch] ([ReportNo], [SupplierRef], [ClaimID], [SupplierID], [DID]) INCLUDE ([ID], [InvoiceTotal]) WITH (FILLFACTOR=98) ON [PRIMARY]
 GO
 CREATE NONCLUSTERED INDEX [Idx_SupplierRef] ON [dbo].[SupplierInvoiceMatch] ([SupplierRef]) INCLUDE ([ID]) WITH (FILLFACTOR=90, PAD_INDEX=ON) ON [PRIMARY]
 GO

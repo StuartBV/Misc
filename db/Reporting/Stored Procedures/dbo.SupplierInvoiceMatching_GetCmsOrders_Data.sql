@@ -8,7 +8,7 @@ CREATE procedure [dbo].[SupplierInvoiceMatching_GetCmsOrders_Data]
 as
 set nocount on
 insert into SupplierInvoicingAggregates (ReportNo,ClaimID, DID,Total, [Status],PartCancelled, Commodity, Channel, OriginatingSystem, Notes, SpExcess, Discount,MatchRef, CreatedBy)
-select @ReportNo,sd.ClaimID, sd.DID, 
+select distinct @ReportNo,sd.ClaimID, sd.DID, 
 	case when sd.JSRInvoicePrice is null then
 		isnull(sd.POTotal,0) * ((100.00 - isnull(g.RRPDiscount,0.00))/100)
 	else sd.JSRInvoicePrice end POTotal,

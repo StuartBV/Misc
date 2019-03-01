@@ -16,5 +16,5 @@ CREATE TABLE [dbo].[StackAggregatesArchive]
 GO
 ALTER TABLE [dbo].[StackAggregatesArchive] ADD CONSTRAINT [PK_StackAggregatesArchive] PRIMARY KEY NONCLUSTERED  ([ClaimID], [Superfmt], [Channel]) WITH (FILLFACTOR=95, PAD_INDEX=ON) ON [PRIMARY]
 GO
-CREATE CLUSTERED INDEX [idx_Date] ON [dbo].[StackAggregatesArchive] ([CreateDate]) WITH (FILLFACTOR=95, PAD_INDEX=ON) ON [PRIMARY]
+CREATE UNIQUE CLUSTERED INDEX [idx_Date] ON [dbo].[StackAggregatesArchive] ([CreateDate], [ClaimID], [Superfmt]) WITH (FILLFACTOR=99, PAD_INDEX=ON) ON [PRIMARY]
 GO
