@@ -2,7 +2,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
-CREATE proc [dbo].[Invoice_GenerateSageCSV_File]
+CREATE procedure [dbo].[Invoice_GenerateSageCSV_File]
 @channel varchar(50),
 @accountRef varchar(50)=null
 as
@@ -15,7 +15,7 @@ declare @date varchar(20), @errors int=0, @I0rows int, @bcp varchar(500), @path 
 
 set @date= replace(replace( (convert(char(8),getdate(),3) + '-' + convert(char(8),getdate(),114)),':',''),'/','')
 
-select @path=case dbo.servertype() when 'dev' then ppd3.dbo.LocalPath() + 'InvoiceExports\V2\' else '\\tau\InvoiceExports\V2\' end
+select @path=case dbo.servertype() when 'dev' then ppd3.dbo.LocalPath() + 'invoiceExports\V2\' else '\\tau\InvoiceExports\V2\' end
 
 truncate table Worktable_InvoiceExport_Sage
 		insert into Worktable_InvoiceExport_Sage (Transtype,AccountRef,SalesCode,Department,InvoiceDate,InvoiceNumber,Reference,Amount,VatCode,Vat)

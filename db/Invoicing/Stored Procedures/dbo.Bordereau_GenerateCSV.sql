@@ -39,7 +39,7 @@ begin
 end
 else if @channel = 'rsa'
 begin
-	-- custom for RSAProfin
+	-- custom for RSA
 	exec @errors=Bordereau_GenerateCSV_File @path=@path, @NextBordereauNo=@NextBordereauNo, @channel='rsa', @from=@from, @to=@to, @accountRef='RSAV4'
 end
 else if @channel = 'rsaprofin'
