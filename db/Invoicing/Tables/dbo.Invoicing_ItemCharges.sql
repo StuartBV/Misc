@@ -19,7 +19,7 @@ ALTER TABLE [dbo].[Invoicing_ItemCharges] ADD CONSTRAINT [PK_INVOICING_ItemCharg
 GO
 CREATE NONCLUSTERED INDEX [Idx_DeliveryId] ON [dbo].[Invoicing_ItemCharges] ([DeliveryId]) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [ItemID] ON [dbo].[Invoicing_ItemCharges] ([ItemId]) ON [PRIMARY]
+CREATE NONCLUSTERED INDEX [ItemID] ON [dbo].[Invoicing_ItemCharges] ([ItemId]) INCLUDE ([PriceNet], [VatRate]) WITH (FILLFACTOR=95) ON [PRIMARY]
 GO
 CREATE NONCLUSTERED INDEX [idx_ItemCharges] ON [dbo].[Invoicing_ItemCharges] ([VatRate], [DeliveryId], [Type], [PriceNet], [PriceGross]) ON [PRIMARY]
 GO

@@ -30,5 +30,5 @@ CREATE NONCLUSTERED INDEX [BordereauNo] ON [dbo].[Invoicing_Orders] ([BordereauN
 GO
 CREATE NONCLUSTERED INDEX [IX_DeliveryID] ON [dbo].[Invoicing_Orders] ([DeliveryId], [Id], [CreateDate]) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [SageSentDate] ON [dbo].[Invoicing_Orders] ([SageSentDate]) WITH (FILLFACTOR=90) ON [PRIMARY]
+CREATE NONCLUSTERED INDEX [SageSentDate] ON [dbo].[Invoicing_Orders] ([SageSentDate], [Channel], [SourceType]) INCLUDE ([DeliveryId], [InscoID], [Reference], [SupplierId]) WITH (FILLFACTOR=95) ON [PRIMARY]
 GO

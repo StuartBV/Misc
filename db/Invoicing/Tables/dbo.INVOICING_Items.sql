@@ -15,16 +15,19 @@ CREATE TABLE [dbo].[INVOICING_Items]
 [VATRate] [decimal] (4, 2) NOT NULL,
 [Status] [tinyint] NOT NULL CONSTRAINT [DF_InvoicingItemsStatus] DEFAULT ((0)),
 [Installation] [tinyint] NOT NULL CONSTRAINT [DF_InvoicingItemsInstallation] DEFAULT ((0)),
+[CategoryId] [smallint] NOT NULL CONSTRAINT [DF_INVOICING_Items_CategoryId] DEFAULT ((0)),
 [Category] [varchar] (100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 [ItemReference] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[VatDeducted] [decimal] (8, 2) NOT NULL CONSTRAINT [DF_VatDeducted] DEFAULT ((0)),
 [CreateDate] [datetime] NOT NULL CONSTRAINT [DF_InvoicingItemsCreateDate] DEFAULT (getdate()),
 [CreatedBy] [dbo].[UserID] NOT NULL,
 [AlteredDate] [datetime] NULL,
-[AlteredBy] [dbo].[UserID] NULL,
-[VatDeducted] [money] NOT NULL CONSTRAINT [DF_VatDeducted] DEFAULT ((0))
+[AlteredBy] [dbo].[UserID] NULL
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[INVOICING_Items] ADD CONSTRAINT [PK_INVOICING_Items] PRIMARY KEY CLUSTERED  ([OrderId], [ItemId]) ON [PRIMARY]
+ALTER TABLE [dbo].[INVOICING_Items] ADD CONSTRAINT [PK_INVOICING_Items] PRIMARY KEY CLUSTERED  ([OrderId], [ItemId]) WITH (FILLFACTOR=95) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [Idx_DeliveryId] ON [dbo].[INVOICING_Items] ([DeliveryId]) ON [PRIMARY]
+CREATE NONCLUSTERED INDEX [Idx_DeliveryId] ON [dbo].[INVOICING_Items] ([DeliveryId]) INCLUDE ([Category], [CategoryId], [PriceNet], [VATRate]) WITH (FILLFACTOR=95) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [Idx_DeliveryItemId] ON [dbo].[INVOICING_Items] ([DeliveryItemId]) WITH (FILLFACTOR=95) ON [PRIMARY]
 GO
