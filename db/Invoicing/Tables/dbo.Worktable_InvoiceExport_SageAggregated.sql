@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[Worktable_InvoiceExport_Sage]
+CREATE TABLE [dbo].[Worktable_InvoiceExport_SageAggregated]
 (
 [TransType] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 [AccountRef] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

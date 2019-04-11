@@ -5,8 +5,8 @@ CREATE TABLE [dbo].[Invoicing_Order_Charges]
 [DeliveryId] [int] NULL,
 [FulfilmentType] [int] NOT NULL,
 [ServiceCode] [int] NOT NULL,
-[PriceNet] [money] NOT NULL,
-[PriceGross] AS (CONVERT([money],round([PriceNet]*[VatRate],(2)),(0))),
+[PriceNet] [decimal] (8, 2) NOT NULL,
+[PriceGross] AS (CONVERT([decimal](8,2),round([PriceNet]*[VatRate],(2)),(0))),
 [VatRate] [decimal] (4, 2) NOT NULL,
 [CreateDate] [datetime] NOT NULL,
 [CreatedBy] [dbo].[UserID] NOT NULL
@@ -14,7 +14,7 @@ CREATE TABLE [dbo].[Invoicing_Order_Charges]
 GO
 ALTER TABLE [dbo].[Invoicing_Order_Charges] ADD CONSTRAINT [PK_INVOICING_Order_Charges] PRIMARY KEY NONCLUSTERED  ([Id]) WITH (FILLFACTOR=100) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [Idx_Order_Charges] ON [dbo].[Invoicing_Order_Charges] ([DeliveryId], [InvoiceId], [VatRate], [PriceNet], [PriceGross]) ON [PRIMARY]
+CREATE NONCLUSTERED INDEX [Idx_Order_Charges] ON [dbo].[Invoicing_Order_Charges] ([DeliveryId], [InvoiceId], [VatRate], [PriceNet], [PriceGross]) WITH (FILLFACTOR=95) ON [PRIMARY]
 GO
 CREATE UNIQUE CLUSTERED INDEX [InvoiceID] ON [dbo].[Invoicing_Order_Charges] ([InvoiceId], [FulfilmentType]) WITH (FILLFACTOR=95) ON [PRIMARY]
 GO

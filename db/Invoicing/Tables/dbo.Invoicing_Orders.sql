@@ -25,11 +25,11 @@ CREATE TABLE [dbo].[Invoicing_Orders]
 [AlteredBy] [dbo].[UserID] NULL
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[Invoicing_Orders] ADD CONSTRAINT [PK_INVOICING_Order] PRIMARY KEY CLUSTERED  ([Id]) WITH (FILLFACTOR=100) ON [PRIMARY]
+ALTER TABLE [dbo].[Invoicing_Orders] ADD CONSTRAINT [PK_INVOICING_Orders] PRIMARY KEY CLUSTERED  ([Id]) WITH (FILLFACTOR=100) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [BordereauNo] ON [dbo].[Invoicing_Orders] ([BordereauNo]) WITH (FILLFACTOR=95) ON [PRIMARY]
+CREATE NONCLUSTERED INDEX [Idx_BordereauNo] ON [dbo].[Invoicing_Orders] ([BordereauNo]) WITH (FILLFACTOR=95) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [IX_DeliveryID] ON [dbo].[Invoicing_Orders] ([DeliveryId], [Id], [CreateDate]) WITH (FILLFACTOR=95) ON [PRIMARY]
+CREATE NONCLUSTERED INDEX [Idx_DeliveryID] ON [dbo].[Invoicing_Orders] ([DeliveryId], [CreateDate]) WITH (FILLFACTOR=95) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [SageSentDate] ON [dbo].[Invoicing_Orders] ([SageSentDate], [Channel], [SourceType]) INCLUDE ([DeliveryId], [InscoID], [Reference], [SupplierId]) WITH (FILLFACTOR=95) ON [PRIMARY]
+CREATE NONCLUSTERED INDEX [Idx_SageSentDate] ON [dbo].[Invoicing_Orders] ([SageSentDate], [Channel], [SourceType]) INCLUDE ([DeliveryId], [InscoID], [Reference], [SupplierId]) WITH (FILLFACTOR=95) ON [PRIMARY]
 GO

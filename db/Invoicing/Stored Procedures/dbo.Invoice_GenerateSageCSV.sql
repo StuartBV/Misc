@@ -2,43 +2,48 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
-CREATE proc [dbo].[Invoice_GenerateSageCSV]
-@confirm tinyint=0,
-@Channel varchar(50),
+CREATE procedure [dbo].[Invoice_GenerateSageCSV]
+@confirm tinyint=0, 
+@Channel varchar(50), 
 @accountRef varchar(50)=null
-AS
+as
 set nocount on
 set ansi_warnings off
 
-declare @errors int
+declare @error int, @errormsg varchar(100)
 
-if @Channel='RSA'
-begin
- select @accountRef='RSAV4'
-end
+select @accountRef=
+	case @Channel
+		when 'RSA' then 'RSAV4'
+		when 'RSAProfin' then 'RSAProfinV4'
+	else null end,
+	@Channel=case when @Channel like 'RSA%' then 'RSA' else @Channel end
 
-if @Channel='RSAProfin'
-begin
- select @Channel = 'RSA', @accountRef='RSAProfinV4'
-end
-
-exec @errors=Invoice_GenerateSageCSV_File @channel=@channel, @accountRef=@accountRef
-
-if @errors=0 and @confirm=1
-begin
-	-- No errors so confirm invoices
-	begin tran
-		exec Invoice_GenerateSageCSV_Confirm @channel=@channel, @accountRef=@accountRef
-		if @@error=0
+begin try
+	exec @error=Invoice_GenerateSageCSV_File @Channel=@Channel, @AccountRef=@accountRef
+	if @error=0 and @confirm=1
+	begin
+		-- No errors so confirm invoices
+		begin tran
+			exec Invoice_GenerateSageCSV_Confirm @channel=@Channel, @accountRef=@accountRef
+			exec Invoice_GenerateSageCSV_LogConfirmed
+		commit tran
+	end
+	else
+	begin
+		if @error < -1
 		begin
-			insert into Invoicing_ExportLog (invoicenumber,total,vat)
-			select invoicenumber,amount+vat,vat
-			from Worktable_InvoiceExport_Sage 
-			commit tran
+			set @errormsg='Invoice_GenerateSageCSV_File returned ' + Cast(@error as varchar);
+			throw 50000, @errormsg, 1;
 		end
-		else
-		begin
-			rollback tran
-		end
-end
+	end
+end try
+
+begin catch
+	set @errormsg=dbo.ErrorMessage()
+	--raiserror(@errormsg, 15, 1)
+	select dbo.ErrorMessage()
+	if @@TranCount>0 rollback
+end catch
+
 GO
