@@ -10,7 +10,7 @@ as
 set nocount on
 set ansi_warnings off
 
-declare @error int, @errormsg varchar(100)
+declare @error int, @errormsg varchar(100), @ExportId bigint=Cast(dbo.NumbersOnly(Cast(Cast(SysDateTime() as time) as varchar)) as bigint)
 
 select @accountRef=
 	case @Channel
@@ -19,13 +19,21 @@ select @accountRef=
 	else null end,
 	@Channel=case when @Channel like 'RSA%' then 'RSA' else @Channel end
 
+insert into InvoicesToExport (Id, OrderId)
+select @ExportId,	o.Id
+from Invoicing_Orders o
+where
+o.Channel=@Channel
+and o.SourceType not in (2,4,6)
+and o.SageSentDate is null
+
 begin try
-	exec @error=Invoice_GenerateSageCSV_File @Channel=@Channel, @AccountRef=@accountRef
+	exec @error=Invoice_GenerateSageCSV_File @Channel=@Channel, @AccountRef=@accountRef, @ExportId=@ExportId
 	if @error=0 and @confirm=1
 	begin
 		-- No errors so confirm invoices
 		begin tran
-			exec Invoice_GenerateSageCSV_Confirm @channel=@Channel, @accountRef=@accountRef
+			exec Invoice_GenerateSageCSV_Confirm2 @ExportId=@ExportId
 			exec Invoice_GenerateSageCSV_LogConfirmed
 		commit tran
 	end
@@ -45,5 +53,7 @@ begin catch
 	select dbo.ErrorMessage()
 	if @@TranCount>0 rollback
 end catch
+
+delete from InvoicesToExport where Id=@ExportId
 
 GO

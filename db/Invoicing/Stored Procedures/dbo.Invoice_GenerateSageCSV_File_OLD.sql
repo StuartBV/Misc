@@ -2,7 +2,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
-create procedure [dbo].[Invoice_GenerateSageCSV_File_OLD]
+CREATE procedure [dbo].[Invoice_GenerateSageCSV_File_OLD]
 @channel varchar(50),
 @accountRef varchar(50)=null
 as
@@ -28,7 +28,7 @@ set @I0rows=@@RowCount
 if @I0rows>0
 begin
 	set @bcp= PPD3.dbo.BcpCommand() + 'Invoicing.dbo.Worktable_InvoiceExport_Sage out "' + @path + 'INV_' + @date +'.csv" -c -t, -S' +Cast(ServerProperty('servername') as varchar)+  ' -T'
-	exec master.dbo.xp_cmdshell @bcp--,no_output
+	exec master.dbo.xp_cmdshell @bcp,no_output
 	set @errors=@@Error
 end
 

@@ -16,7 +16,7 @@ select
 	Amount,
 	Replace(VatCode,'"',''),
 	Vat
-from Worktable_InvoiceExport_Sage
+from Worktable_InvoiceExport_Sage2
 
 insert into logging.dbo.Invoicing_InvoiceExport_Sage_Log (TransType, AccountRef, NominalCode, Department, InvoiceDate, InvoiceNumber, Reference, Amount, VatCode, Vat, [Type])
 select
@@ -30,9 +30,10 @@ select
 	Amount,
 	Replace(VatCode,'"',''),
 	Vat, 1
-from Worktable_InvoiceExport_SageAggregated
+from Worktable_InvoiceExport_Sage2Aggregated
 
-truncate table Worktable_InvoiceExport_Sage
-truncate table Worktable_InvoiceExport_SageAggregated
+truncate table Worktable_InvoiceExport_Sage2
+truncate table Worktable_InvoiceExport_Sage2Aggregated
+
 
 GO
